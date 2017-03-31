@@ -20,42 +20,48 @@
     </div>
     
     <div>
-    <div>
-        <input type="button" value="1A" class="kbutton btn btn-default">
-        <input type="button" value="2A" class="kbutton btn btn-default">
-        <input type="button" value="3A" class="kbutton btn btn-default">
-        <input type="button" value="4A" class="kbutton btn btn-default">
-        <input type="button" value="5A" class="kbutton btn btn-default">
-        <input type="button" value="6A" class="kbutton btn btn-default">
-        <input type="button" value="7A" class="kbutton btn btn-default">
-    </div>
-    <div>
-        <input type="button" value="1B" class="kbutton btn btn-default">
-        <input type="button" value="2B" class="kbutton btn btn-default">
-        <input type="button" value="3B" class="kbutton btn btn-default">
-        <input type="button" value="4B" class="kbutton btn btn-default">
-        <input type="button" value="5B" class="kbutton btn btn-default">
-        <input type="button" value="6B" class="kbutton btn btn-default">
-        <input type="button" value="7B" class="kbutton btn btn-default">
-    </div>
-    <div>
-        <input type="button" value="1C" class="kbutton btn btn-default">
-        <input type="button" value="2C" class="kbutton btn btn-default">
-        <input type="button" value="3C" class="kbutton btn btn-default">
-        <input type="button" value="4C" class="kbutton btn btn-default">
-        <input type="button" value="5C" class="kbutton btn btn-default">
-        <input type="button" value="6C" class="kbutton btn btn-default">
-        <input type="button" value="7C" class="kbutton btn btn-default">
-    </div>
-    <div>
-        <input type="button" value="1D" class="kbutton btn btn-default">
-        <input type="button" value="2D" class="kbutton btn btn-default">
-        <input type="button" value="3D" class="kbutton btn btn-default">
-        <input type="button" value="4D" class="kbutton btn btn-default">
-        <input type="button" value="5D" class="kbutton btn btn-default">
-        <input type="button" value="6D" class="kbutton btn btn-default">
-        <input type="button" value="7D" class="kbutton btn btn-default">
-    </div>
+        <div>
+            <input type="button" value="1A" class="kbutton btn btn-default">
+            <input type="button" value="2A" class="kbutton btn btn-default">
+            <input type="button" value="3A" class="kbutton btn btn-default">
+            <input type="button" value="4A" class="kbutton btn btn-default">
+            <input type="button" value="5A" class="kbutton btn btn-default">
+            <input type="button" value="6A" class="kbutton btn btn-default">
+            <input type="button" value="7A" class="kbutton btn btn-default">
+        </div>
+        <div>
+            <input type="button" value="1B" class="kbutton btn btn-default">
+            <input type="button" value="2B" class="kbutton btn btn-default">
+            <input type="button" value="3B" class="kbutton btn btn-default">
+            <input type="button" value="4B" class="kbutton btn btn-default">
+            <input type="button" value="5B" class="kbutton btn btn-default">
+            <input type="button" value="6B" class="kbutton btn btn-default">
+            <input type="button" value="7B" class="kbutton btn btn-default">
+        </div>
+        <div>
+            <input type="button" value="1C" class="kbutton btn btn-default">
+            <input type="button" value="2C" class="kbutton btn btn-default">
+            <input type="button" value="3C" class="kbutton btn btn-default">
+            <input type="button" value="4C" class="kbutton btn btn-default">
+            <input type="button" value="5C" class="kbutton btn btn-default">
+            <input type="button" value="6C" class="kbutton btn btn-default">
+            <input type="button" value="7C" class="kbutton btn btn-default">
+        </div>
+        <div>
+            <input type="button" value="1D" class="kbutton btn btn-default">
+            <input type="button" value="2D" class="kbutton btn btn-default">
+            <input type="button" value="3D" class="kbutton btn btn-default">
+            <input type="button" value="4D" class="kbutton btn btn-default">
+            <input type="button" value="5D" class="kbutton btn btn-default">
+            <input type="button" value="6D" class="kbutton btn btn-default">
+            <input type="button" value="7D" class="kbutton btn btn-default">
+        </div>
+        <div>
+            <input type="button" value="Aspiranter" class="kbutton btn btn-default">
+            <input type="button" value="Crew" class="kbutton btn btn-default">
+            <input type="button" value="Marbarudvalget" class="kbutton btn btn-default">
+        </div>
+        
     </div>
 </form>
 

@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "ej18nul6";
+$password = "123qweasd";
 $dbname = "MarBar";
 
 // Create connection
@@ -28,7 +28,8 @@ $sql = "INSERT INTO Streger (kitchen) VALUES
        ('1A'), ('2A'), ('3A'), ('4A'), ('5A'), ('6A'), ('7A'),
        ('1B'), ('2B'), ('3B'), ('4B'), ('5B'), ('6B'), ('7B'),
        ('1C'), ('2C'), ('3C'), ('4C'), ('5C'), ('6C'), ('7C'),
-       ('1D'), ('2D'), ('3D'), ('4D'), ('5D'), ('6D'), ('7D')";
+       ('1D'), ('2D'), ('3D'), ('4D'), ('5D'), ('6D'), ('7D'),
+       ('Aspiranter'), ('Crew'), ('Marbarudvalget')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Rows created successfully\n";

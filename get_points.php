@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "ej18nul6";
+$password = "123qweasd";
 $dbname = "MarBar";
 
 // Create connection
