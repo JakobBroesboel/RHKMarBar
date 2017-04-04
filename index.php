@@ -9,13 +9,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="odometer/odometer.js"></script>
+  <script src="includes/jcarousel/dist/jquery.jcarousel.min.js"></script>
   
   <script>
     window.odometerOptions = {
         format: 'd'
     };
   </script>
-  
+
 </head>
 
 <style>
@@ -27,9 +28,43 @@
         text-align:center;
     }
     
-    .mySlides {display:none;}
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+  
+ .carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function:linear;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+.top-buffer {
+    margin-top:100px;
+}
     
-    .instragramSlides {display:none;}
 </style>
 
 <body>
@@ -89,17 +124,15 @@
             
             
             <div class="row">
-                <div class="col-sm-6">
-                    <?php include 'includes/InstagramSlider.php';?>
+                <div class="col-sm-6 container top-buffer" id="graphSlider">
                 </div>
                 
-                <div class="col-sm-6">
-                    <?php include 'includes/GraphSlider.php';?>
+                <div class="col-sm-6 container top-buffer" id="instagramSlider">
                 </div>
             </div>
             
             
-            <div class="row">
+            <div class="row top-buffer">
                 <div class="col-sm-4">
                     <h1>Aspiranter</h1>
                     <div id="Aspiranter" class="odometer">0</div>
@@ -166,42 +199,14 @@
 
 
 <script id="source" language="javascript" type="text/javascript">
-  
-  var g_myIndex = 0;
-  var g_timer_seconds = 3;
-  g_carousel();
-
-  function g_carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
-    }
-    g_myIndex++;
-    if (g_myIndex > x.length) {g_myIndex = 1}    
-    x[g_myIndex-1].style.display = "block";  
-    setTimeout(g_carousel, g_timer_seconds*1000); // Change image every 2 seconds
-    }
-    
-  var i_myIndex = 0;
-  var i_timer_seconds = 3;
-  i_carousel();
-
-  function i_carousel() {
-    var i;
-    var x = document.getElementsByClassName("instagramSlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
-    }
-    i_myIndex++;
-    if (i_myIndex > x.length) {i_myIndex = 1}    
-    x[i_myIndex-1].style.display = "block";  
-    setTimeout(i_carousel, g_timer_seconds*1000); // Change image every 2 seconds
-    }
+  $( document ).ready(function() {
+      graphCarousel();
+      instagramCarousel();
+  });
 
   function update() {
      $.ajax({                                      
-                url: 'get_points.php',                    
+                url: 'includes/get_points.php',                    
                 data: "",                        
                 dataType: 'json',                
                 success: function(data) {
@@ -215,8 +220,82 @@
               }
               );
   }
-  
   setInterval(update, 500);
+  
+  function graphCarousel(){
+    $.ajax({                                      
+             url: 'includes/get_images.php',                    
+             data: "",                        
+             dataType: 'json',                
+             success: function(data) {
+                var html = "<div id='graphCarousel' class='carousel slide carousel-fade'>";
+                    html += "<div class='carousel-inner' role='listbox'>";
+                
+                var style = "style='width:500px;height:500px;'"
+                var i = true;
+                data.forEach(function(image) {
+                    var item = "";
+                    
+                    if(i) {
+                        item += "<div class='item active'>"; 
+                    } else {
+                        item += "<div class='item'>"; 
+                    }
+                    item += "<img src='images/graphs/" + image + "' " + style + ">";
+                    item += "</div>";
+                    html += item;
+                    i = false;
+                });
+                
+                html += "</div>";
+                html += "</div>";
+                
+                $('#graphSlider').html(html);
+                $('#graphCarousel').carousel({interval:3000});                
+           
+             }
+          });
+  }
+  setInterval(graphCarousel, 10000);
+  
+  function instagramCarousel(){
+    $.ajax({                                      
+             url: 'includes/get_instagram_images.php',                    
+             data: "",                        
+             dataType: 'json',                
+             success: function(data) {
+                
+                var html = "<div id='instagramCarousel' class='carousel slide carousel-fade'>";
+                    html += "<div class='carousel-inner' role='listbox'>";
+                
+                var style = "style='width:500px;height:500px;'"
+                var i = true;
+                data.forEach(function(image) {
+                    if(image === null) { return; }
+                    var item = "";
+                    
+                    if(i) {
+                        item += "<div class='item active'>"; 
+                    } else {
+                        item += "<div class='item'>"; 
+                    }
+                    item += "<img src='" + image + "' " + style + ">";
+                    item += "</div>";
+                    html += item;
+                    i = false;
+                });
+                
+                html += "</div>";
+                html += "</div>";
+                
+                $('#instagramSlider').html(html);
+                $('#instagramCarousel').carousel({interval:3000});                
+           
+             }
+          });
+  }
+  setInterval(instagramCarousel, 10000);
+  
 </script>
 
 </body>

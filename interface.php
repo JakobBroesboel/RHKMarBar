@@ -73,7 +73,7 @@ $(document).ready(function() {
         var val = $(this).val()
         $("#kitchen").val(val);
         
-        var url = "update.php";
+        var url = "includes/update.php";
         var type = "post";
         var data = {};
     
