@@ -12,7 +12,7 @@ graphs = ['python barplot.py', 'python graphplot.py']
 def appenddata():
     db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                          user="root",         # your username
-                         passwd="123qweasd",  # your password
+                         passwd="ej18nul6",  # your password
                          db="MarBar")        # name of the data base
 
     # you must create a Cursor object. It will let
