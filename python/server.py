@@ -7,7 +7,7 @@ import barplot
 import os 
 
 running = True
-graphs = ['python barplot.py']
+graphs = ['python barplot.py', 'python graphplot.py']
 
 def appenddata():
     db = MySQLdb.connect(host="localhost",    # your host, usually localhost

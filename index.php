@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>index</title>
+  <title>MarBar</title>
   <meta charset="utf-8">
+  <meta Http-Equiv="Cache-Control" Content="no-cache">
+  <meta Http-Equiv="Pragma" Content="no-cache">
+  <meta Http-Equiv="Expires" Content="0">
+  <meta Http-Equiv="Pragma-directive: no-cache">
+  <meta Http-Equiv="Cache-directive: no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="odometer/themes/odometer-theme-car.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="odometer/odometer.js"></script>
-  <script src="includes/jcarousel/dist/jquery.jcarousel.min.js"></script>
-  
   <script>
     window.odometerOptions = {
         format: 'd'
@@ -199,9 +202,11 @@
 
 
 <script id="source" language="javascript" type="text/javascript">
+  $.ajaxSetup({cache: false});
   $( document ).ready(function() {
       graphCarousel();
       instagramCarousel();
+      $.ajaxSetup({ cache: true });
   });
 
   function update() {
@@ -223,6 +228,7 @@
   setInterval(update, 500);
   
   function graphCarousel(){
+  
     $.ajax({                                      
              url: 'includes/get_images.php',                    
              data: "",                        
@@ -232,6 +238,7 @@
                     html += "<div class='carousel-inner' role='listbox'>";
                 
                 var style = "style='width:500px;height:500px;'"
+                var nocache = "?" + (new Date()).getTime();
                 var i = true;
                 data.forEach(function(image) {
                     var item = "";
@@ -241,7 +248,7 @@
                     } else {
                         item += "<div class='item'>"; 
                     }
-                    item += "<img src='images/graphs/" + image + "' " + style + ">";
+                    item += "<img src='images/graphs/" + image + nocache + "' " + style + ">";
                     item += "</div>";
                     html += item;
                     i = false;
@@ -249,7 +256,7 @@
                 
                 html += "</div>";
                 html += "</div>";
-                
+                $('#graphCarousel').remove()
                 $('#graphSlider').html(html);
                 $('#graphCarousel').carousel({interval:3000});                
            
@@ -269,6 +276,7 @@
                     html += "<div class='carousel-inner' role='listbox'>";
                 
                 var style = "style='width:500px;height:500px;'"
+                var nocache = "?" + (new Date()).getTime();
                 var i = true;
                 data.forEach(function(image) {
                     if(image === null) { return; }
@@ -279,7 +287,7 @@
                     } else {
                         item += "<div class='item'>"; 
                     }
-                    item += "<img src='" + image + "' " + style + ">";
+                    item += "<img src='" + image + nocache + "' " + style + ">";
                     item += "</div>";
                     html += item;
                     i = false;

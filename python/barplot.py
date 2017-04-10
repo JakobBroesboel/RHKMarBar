@@ -26,8 +26,8 @@ barlist = plt.bar(np.arange(len(data)), data, width=1.0, align='center')
 for i in range(len(data)):
     barlist[i].set_color(colors[i])
 
-
 plt.xticks(np.arange(len(data)), labels, rotation='vertical')
 plt.margins(0.0)
 plt.tight_layout()
+plt.title('Streger - Total')
 plt.savefig('../images/graphs/barplot.png')
